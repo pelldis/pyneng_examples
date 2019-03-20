@@ -1,5 +1,6 @@
 import subprocess
 import ipaddress
+from tabulate import tabulate
 
 def check_ip_address(ip_addressess):
     active_lst = []
@@ -10,6 +11,7 @@ def check_ip_address(ip_addressess):
             active_lst.append(i)
         else:
             unreachable_lst.append(i)
+    print(1)
     return active_lst, unreachable_lst
 
 def check_ip_availability(ip1):
@@ -26,7 +28,10 @@ def check_ip_availability(ip1):
         ip_list = [ip1]  
     return ip_list 
 
+def ip_table(ip_list1, ip_list2):
+    print(tabulate({'Reachable': ip_list1, 'Unreachable': ip_list2}, headers='keys', stralign='left'))
+
 if __name__=='__main__':
     ip_list = input('vvedite ip: ') 
-    print (check_ip_address(check_ip_availability(ip_list))) 
-      
+    ip_lists = check_ip_address(check_ip_availability(ip_list)) 
+    ip_table(ip_lists[0], ip_lists[1]) 
