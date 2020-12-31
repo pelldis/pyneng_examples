@@ -16,3 +16,4 @@ interface FastEthernet0/1.100
 interface FastEthernet0/1.200
  ip ospf hello-interval 1
 !
+!
